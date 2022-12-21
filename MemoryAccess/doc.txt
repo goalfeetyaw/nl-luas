@@ -1,0 +1,77 @@
+memory:getProcSnapshot() -> snapshot
+This function creates a snapshot of all processes in the system. The snapshot can be used to enumerate processes and their modules.
+
+Returns:
+
+snapshot: A handle to the snapshot.
+memory:findProcID(processname[, print]) -> procId
+This function finds the process ID (procId) of a given process name.
+
+Parameters:
+
+processname: The name of the process to find.
+print (optional): A boolean value indicating whether to print the process ID. Default is false.
+Returns:
+
+procId: The process ID of the given process name. Returns nil if the process was not found.
+memory:getHandle(procId[, print]) -> handle
+This function opens a handle to a given process ID. The handle can be used to read and write process memory.
+
+Parameters:
+
+procId: The process ID of the process to open a handle to.
+print (optional): A boolean value indicating whether to print the handle. Default is false.
+Returns:
+
+handle: A handle to the given process ID. Returns nil if the handle could not be opened.
+memory:dumpModules(procId)
+This function enumerates all the modules of a given process ID and prints their names and base addresses.
+
+Parameters:
+
+procId: The process ID of the process to enumerate the modules of.
+Returns:
+
+Nothing.
+memory:GetModuleBaseAddress(procId, modName[, print]) -> baseAddr
+This function finds the base address of a given module name in a given process ID.
+
+Parameters:
+
+procId: The process ID of the process to find the module in.
+modName: The name of the module to find the base address of.
+print (optional): A boolean value indicating whether to print the base address. Default is false.
+Returns:
+
+baseAddr: The base address of the given module name in the given process ID. Returns nil if the module was not found.
+memory:read(procId, address, valueType[, print]) -> value
+This function reads a value from a given address in a given process ID.
+
+Parameters:
+
+procId: The process ID of the process to read from.
+address: The address to read from.
+valueType: The type of the value to read. Possible types are "int", "uint", "short", `"
+
+memory:write(procId, address, value, valueType, print)
+This function allows you to write a value of a given type to a specific memory address in a given process.
+
+Parameters
+procId: The ID of the process to which you want to write the value.
+address: The memory address where you want to write the value.
+value: The value you want to write to the memory address.
+valueType: The type of the value you want to write. This should be a string, such as "int" or "float".
+print: A boolean value indicating whether you want the function to print a message confirming that the write was successful.
+Return value
+This function returns a boolean value indicating whether the write was successful.
+
+memory:GetDMAAddr( procId , baseAddr, offsets , print)
+This function allows you to get the memory address of a value that is stored at a specific location in a given process, with a specified series of offsets applied to it.
+
+Parameters
+procId: The ID of the process in which you want to get the memory address.
+baseAddr: The base memory address from which you want to start applying the offsets.
+offsets: A table containing the offsets that you want to apply to the base memory address. Each element of the table should be an integer.
+print: A boolean value indicating whether you want the function to print a message containing the resulting memory address.
+Return value
+This function returns the memory address resulting from applying the offsets to the base memory address. This is returned as a cdata object.
